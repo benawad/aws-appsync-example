@@ -4,7 +4,6 @@ import Amplify from "@aws-amplify/core";
 
 import config from "./aws-exports";
 import App from "./App";
-import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
 Amplify.configure(config);

@@ -2,7 +2,6 @@ import * as React from "react";
 import { Connect } from "aws-amplify-react";
 import { graphqlOperation } from "aws-amplify";
 
-import "./App.css";
 import { Form } from "./Form";
 import { createBlog } from "./graphql/mutations";
 import { Blogs } from "./Blogs";
@@ -10,7 +9,7 @@ import { Blogs } from "./Blogs";
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
+      <div style={{ textAlign: "center" }}>
         <Connect mutation={graphqlOperation(createBlog)}>
           {({ mutation }: any) => (
             <Form
