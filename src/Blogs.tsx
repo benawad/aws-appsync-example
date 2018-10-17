@@ -1,20 +1,23 @@
 import * as React from "react";
-import { graphqlOperation } from "aws-amplify";
-import { Connect } from "aws-amplify-react";
 import { listBlogs } from "./graphql/queries";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import { ListBlogsQuery } from "./API";
 
 export class Blogs extends React.PureComponent {
   render() {
     return (
-      <Connect query={graphqlOperation(listBlogs)}>
-        {({ data: { listBlogs: blogs } }: any) => {
-          if (!blogs) {
+      <Query<ListBlogsQuery> query={gql(listBlogs)}>
+        {({ data, loading }) => {
+          if (loading || !data || !data.listBlogs || !data.listBlogs.items) {
             return null;
           }
 
-          return blogs.items.map((b: any) => <div key={b.name}>{b.name}</div>);
+          return data.listBlogs.items.map((b: any) => (
+            <div key={b.name}>{b.name}</div>
+          ));
         }}
-      </Connect>
+      </Query>
     );
   }
 }
