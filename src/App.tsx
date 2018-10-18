@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withAuthenticator } from "aws-amplify-react";
 
 import { Form } from "./Form";
 import { createBlog } from "./graphql/mutations";
@@ -8,7 +9,7 @@ import gql from "graphql-tag";
 import { CreateBlogMutation, CreateBlogMutationVariables } from "./API";
 import { listBlogs } from "./graphql/queries";
 
-export default class App extends React.Component {
+class App extends React.Component {
   public render() {
     return (
       <div style={{ textAlign: "center" }}>
@@ -32,3 +33,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default withAuthenticator(App);

@@ -11,10 +11,9 @@ import registerServiceWorker from "./registerServiceWorker";
 Amplify.configure(config);
 
 const client = new ApolloClient({
-  uri:
-    "https://lpttylfopzdczo5gi7fcwoqs2m.appsync-api.us-east-1.amazonaws.com/graphql",
+  uri: config.aws_appsync_graphqlEndpoint,
   headers: {
-    "X-Api-Key": "da2-rvyi25lb4natdhd2igwdvtalee"
+    "X-Api-Key": config.aws_appsync_apiKey
   }
 });
 
